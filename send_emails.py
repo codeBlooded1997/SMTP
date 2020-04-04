@@ -15,8 +15,8 @@ sender_name = 'Arian A.'
 password = 'hooman12'
 
 # Who is this email going to ve sent to
-recipient_email = 'arianaghnaei@gmail.com'
-recipient_name = 'John Doe'
+recipient_emails = ['arianaghnaei@gmail.com', 'beautifulcube@protonmail.com']
+recipient_names = ['Arian', 'Cube']
 
 
 email_text = """
@@ -24,8 +24,13 @@ email_text = """
              """
 
 # Email sending function
-def send_email():
-    print('\nSending email...\n')
+def broadcast_email():
+    print('\nBroadcasting email...\n')
+
+
+# Loop through entire emails list
+# zip() takes 2 lists and comines them (takes first elements of each list and put together in a tuple.)
+for recipient_name, recipient_email in zip(recipient_names, recipient_emails):
 
     # Get message ready in email format
     message = MIMEText(email_text)
@@ -52,7 +57,10 @@ def send_email():
     # Cleanup
     server.quit()
 
-    print('\nEmail sent.\n')
+    # Confirm it was sent to client
+    print('Sent to {} at {}.'.format(recipient_name, recipient_email))
+
+print('\nEmail sent.\n')
 
 # Calling the function to send emails
-send_email()
+broadcast_email()
