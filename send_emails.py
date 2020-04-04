@@ -20,7 +20,7 @@ recipient_name = 'John Doe'
 
 
 email_text = """
-             Dummy text. Yo whats's up.
+             New Dummy text. We are following industry email standard protocols.
              """
 
 # Email sending function
@@ -30,13 +30,10 @@ def send_email():
     # Get message ready in email format
     message = MIMEText(email_text)
 
-    #print(message)
-
-    #
+    # Populate the message object with data. Good pracyice. Follow protocol and industry standard please.
     message['To'] = email.utils.formataddr((recipient_name, recipient_email))
-    message['From'] =
-    message['Subject'] =
-
+    message['From'] = email.utils.formataddr((sender_name, sender_email))
+    message['Subject'] = "NOT SPAN. OPEN ME. PROMISE NOT SPAM"
 
     # Setup the email server. Gmail host, and use a common port (I googled these things)
     # Common smtp ports: 25 or 2525 or 587
@@ -50,7 +47,7 @@ def send_email():
     server.login(sender_email, password)
 
     # Send the email
-    #server.sendmail(sender_email, recipient_email, email_text)
+    server.sendmail(sender_email, recipient_email, message.as_string())
 
     # Cleanup
     server.quit()
