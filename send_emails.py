@@ -19,48 +19,50 @@ recipient_emails = ['arianaghnaei@gmail.com', 'beautifulcube@protonmail.com']
 recipient_names = ['Arian', 'Cube']
 
 
-email_text = """
-             New Dummy text. We are following industry email standard protocols.
+email_html = """
+             <h1>Dummy Header!</h1>
+             <p>New Dummy text. We are following industry email standard protocols.</p>
              """
 
 # Email sending function
 def broadcast_email():
     print('\nBroadcasting email...\n')
 
+    # Loop through entire emails list
+    # zip() takes 2 lists and comines them (takes first elements of each list and put together in a tuple.)
+    for recipient_name, recipient_email in zip(recipient_names, recipient_emails):
 
-# Loop through entire emails list
-# zip() takes 2 lists and comines them (takes first elements of each list and put together in a tuple.)
-for recipient_name, recipient_email in zip(recipient_names, recipient_emails):
+        # Get message ready in email format. Give us html functionality
+        message = MIMEText(email_html, 'html')
+        message.add_header('Content-Type', 'text/html')
 
-    # Get message ready in email format
-    message = MIMEText(email_text)
+        # Populate the message object with data. Good pracyice. Follow protocol and industry standard please.
+        message['To'] = email.utils.formataddr((recipient_name, recipient_email))
+        message['From'] = email.utils.formataddr((sender_name, sender_email))
+        message['Subject'] = "New New Dummy text. I am sending an html email to you."
 
-    # Populate the message object with data. Good pracyice. Follow protocol and industry standard please.
-    message['To'] = email.utils.formataddr((recipient_name, recipient_email))
-    message['From'] = email.utils.formataddr((sender_name, sender_email))
-    message['Subject'] = "NOT SPAN. OPEN ME. PROMISE NOT SPAM"
+        # Setup the email server. Gmail host, and use a common port (I googled these things)
+        # Common smtp ports: 25 or 2525 or 587
+        server = smtplib.SMTP('smtp.gmail.com', 587)  # hotmail: smtp.live.com   # aol: smtp.aol.com  #yahoo: smtp.mail.yahoo.com
 
-    # Setup the email server. Gmail host, and use a common port (I googled these things)
-    # Common smtp ports: 25 or 2525 or 587
-    server = smtplib.SMTP('smtp.gmail.com', 587)  # hotmail: smtp.live.com   # aol: smtp.aol.com  #yahoo: smtp.mail.yahoo.com
+        # I asicly allow us encript what we are sending to server from this point on
+        # Turn on Transport layer security. All commands after this will be encrypted.
+        server.starttls()
 
-    # I asicly allow us encript what we are sending to server from this point on
-    # Turn on Transport layer security. All commands after this will be encrypted.
-    server.starttls()
+        # Login to the senders email
+        server.login(sender_email, password)
 
-    # Login to the senders email
-    server.login(sender_email, password)
+        # Send the email
+        server.sendmail(sender_email, recipient_email, message.as_string())
 
-    # Send the email
-    server.sendmail(sender_email, recipient_email, message.as_string())
+        # Cleanup
+        server.quit()
 
-    # Cleanup
-    server.quit()
+        # Confirm it was sent to client
+        print('Sent to {} at {}.'.format(recipient_name, recipient_email))
 
-    # Confirm it was sent to client
-    print('Sent to {} at {}.'.format(recipient_name, recipient_email))
+    print('\nEmail Broadcasted.\n')
 
-print('\nEmail sent.\n')
 
 # Calling the function to send emails
 broadcast_email()
