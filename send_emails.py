@@ -7,6 +7,9 @@ from email.mime.text import  MIMEText
 # Import pythons email utility package. using this library we can pass in the recipients name and email together
 import email.utils
 
+# For reading csv files
+import pandas as pd
+
 # Which email is this being send from
 sender_email = 'ariannumber1@gmail.com'
 sender_name = 'Arian A.'
@@ -14,15 +17,19 @@ sender_name = 'Arian A.'
 # Password so we can log in to the senders account
 password = 'hooman12'
 
+# Read csv using pandas
+column_names = ['name', 'email']
+data = pd.read_csv('source/Email_List.csv', names=column_names)
+
 # Who is this email going to ve sent to
-recipient_emails = ['arianaghnaei@gmail.com', 'beautifulcube@protonmail.com']
-recipient_names = ['Arian', 'Cube']
+recipient_emails = data.email.tolist()[1:]
+recipient_names = data.name.tolist()[1:]
 
+# Read in html file
+html_file = open("source/Email_Contents.html","r")
 
-email_html = """
-             <h1>Dummy Header!</h1>
-             <p>New Dummy text. We are following industry email standard protocols.</p>
-             """
+# Message body
+email_html = html_file.read()
 
 # Email sending function
 def broadcast_email():
