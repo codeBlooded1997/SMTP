@@ -11,11 +11,11 @@ import email.utils
 import pandas as pd
 
 # Which email is this being send from
-sender_email = 'ariannumber1@gmail.com'
-sender_name = 'Arian A.'
+sender_email = 'arthurSMPT372@gmail.com'
+sender_name = 'Arthur'
 
 # Password so we can log in to the senders account
-password = 'hooman12'
+password = 'test01SMTP'
 
 # Read csv using pandas
 column_names = ['name', 'email']
@@ -46,7 +46,7 @@ def broadcast_email():
         # Populate the message object with data. Good pracyice. Follow protocol and industry standard please.
         message['To'] = email.utils.formataddr((recipient_name, recipient_email))
         message['From'] = email.utils.formataddr((sender_name, sender_email))
-        message['Subject'] = "New New Dummy text. I am sending an html email to you."
+        message['Subject'] = "Sent using an email automation software."
 
         # Setup the email server. Gmail host, and use a common port (I googled these things)
         # Common smtp ports: 25 or 2525 or 587
@@ -68,7 +68,7 @@ def broadcast_email():
         # Confirm it was sent to client
         print('Sent to {} at {}.'.format(recipient_name, recipient_email))
 
-    print('\nEmail Broadcasted.\n')
+    print('\nEmails Broadcasted.\n')
 
 
 # Calling the function to send emails
