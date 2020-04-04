@@ -4,6 +4,9 @@ import smtplib
 # Import MIME test format library. MIME = Multipurpose Internet Mail Extrnsions. Its an internet standard we gollow to encode email contents, like attachements, pictures, links, text, etc...
 from email.mime.text import  MIMEText
 
+# Import pythons email utility package. using this library we can pass in the recipients name and email together
+import email.utils
+
 # Which email is this being send from
 sender_email = 'ariannumber1@gmail.com'
 sender_name = 'Arian A.'
@@ -17,8 +20,8 @@ recipient_name = 'John Doe'
 
 
 email_text = """
-            Dummy text. Yo whats's up.
-            """
+             Dummy text. Yo whats's up.
+             """
 
 # Email sending function
 def send_email():
@@ -27,7 +30,13 @@ def send_email():
     # Get message ready in email format
     message = MIMEText(email_text)
 
-    print(message)
+    #print(message)
+
+    #
+    message['To'] = email.utils.formataddr((recipient_name, recipient_email))
+    message['From'] =
+    message['Subject'] =
+
 
     # Setup the email server. Gmail host, and use a common port (I googled these things)
     # Common smtp ports: 25 or 2525 or 587
