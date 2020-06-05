@@ -1,7 +1,7 @@
 # import the SMTP library. SMTP = simple main transfer protocol. its a protocol we must follow to send emails
 import smtplib
 
-# Import MIME test format library. MIME = Multipurpose Internet Mail Extrnsions. Its an internet standard we gollow to encode email contents, like attachements, pictures, links, text, etc...
+# Import MIME test format library. MIME = Multipurpose Internet Mail Extensions. Its an internet standard we follow to encode email contents, like attachements, pictures, links, text, etc...
 from email.mime.text import  MIMEText
 
 # Import pythons email utility package. using this library we can pass in the recipients name and email together
@@ -21,7 +21,7 @@ password = 'test01SMTP'
 column_names = ['name', 'email']
 data = pd.read_csv('source/Email_List.csv', names=column_names)
 
-# Who is this email going to ve sent to
+# Who is this email going to be sent to
 recipient_emails = data.email.tolist()[1:]
 recipient_names = data.name.tolist()[1:]
 
