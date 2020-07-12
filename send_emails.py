@@ -10,12 +10,10 @@ import email.utils
 # For reading csv files
 import pandas as pd
 
-# Which email is this being send from
-sender_email = 'arthurSMPT372@gmail.com'
-sender_name = 'Arthur'
-
-# Password so we can log in to the senders account
-password = 'test01SMTP'
+# SENDER'S EMAIL CREDENTALS
+sender_name = 'SENDER NAME'
+sender_email = 'SENDER EMAIL ADDRESS'
+password = 'SENDEER EMAIL ACCOUNT PASSWORD'
 
 # Read csv using pandas
 column_names = ['name', 'email']
