@@ -1,5 +1,12 @@
 # SMTP
- 
+
+
+In this project I learned
+	- How to read bulk files and use the data in my own script.
+	- How to use SMTP python package to send email to multiple users(technically quantity of users is unlimited).
+	- Uising MIMEText to encode email contents, like attachements, pictures, links, text, etc... .
+	
+		
 This is a commandline application so you have to run it in a terminal window.
 
 Steps for testing the app(after extracting the zip file):
