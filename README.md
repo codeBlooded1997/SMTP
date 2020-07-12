@@ -11,12 +11,15 @@ This is a commandline application so you have to run it in a terminal window.
 
 Steps for testing the app(after extracting the zip file):
 	
-	1. If you wnat to recieve email (just to see how it sends emails) open the source folder and add your name and email address to the file : Email_List.csv .
+	1. Update Email_List.csv file in the source folder and add email addresses that you want to recieve the email.
 	2. save the csv file.
-	3. Open a terminal window
-	4. Direct to where you extracted the app file.
-	5. Run the command:
+	3. Open a terminal a new terminal window and navigate to directory where the send_emails.py file exists.
+	4. Run the command:
 			python send_emails.py
-	   You will see whats happening in your consule while the app is running.
+	   Updates will displayed in console
 
-	6. Check your inbox
+	6. Check your inbox to see if you've recieevd the email.
+
+I'm interested in knowing your idea about this piece of code so don't hesitate to contact me.
+Thanks for using this script.
+Arian
