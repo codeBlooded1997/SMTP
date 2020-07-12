@@ -12,7 +12,7 @@ This is a commandline application so you have to run it in a terminal window.
 Steps for testing the app(after extracting the zip file):
 	
 	1. Update Email_List.csv file in the source folder and add email addresses that you want to recieve the email. Save the csv file.
-	2. In the send_email.py file, update the sender's email credentials and name. Save the python script.
+	2. In the send_email.py file (line 13), update the sender's email credentials and name. Save the python script.
 	3. Open a terminal a new terminal window and navigate to directory where the send_emails.py file exists.
 	4. Run the command:
 			python send_emails.py
